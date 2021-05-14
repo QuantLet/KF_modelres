@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------------
-# Project:     KalmanFilter_Crix 
+# Project:     KalmanFilter_CRIX
 # ------------------------------------------------------------------------------
 # Quantlet:    KF_modelres
 # ------------------------------------------------------------------------------
-# Description: Use the crix data as an example to predict market return by
+# Description: Use the CRIX data as an example to predict market return by
 #              Kalman filter
 # ------------------------------------------------------------------------------
-# Keywords:    plot, Kalman Filter, predict, estimation, returns, crix, gif
+# Keywords:    plot, Kalman Filter, predict, estimation, returns, CRIX, gif
 # ------------------------------------------------------------------------------
 # See also:    https://gist.github.com/mathew-hall/2ca753c68a594e2c37b1
 # ------------------------------------------------------------------------------
@@ -22,6 +22,8 @@ lapply(libraries, function(x) if (!(x %in% installed.packages())) {
   install.packages(x)
 })
 lapply(libraries, library, quietly = TRUE, character.only = TRUE)
+
+# people can change the wdir
 wdir = "/Users/wkhaerdle/Documents/Project/Metis/"
 setwd(wdir)
 dir.create("Results")
@@ -38,7 +40,6 @@ crix = crix[which(crix$date >= end),]
 count = nrow(crix)
 price = crix$price
 return = c(0, diff(log(crix$price))) #observations
-# z = log(crix$price)
 
 #Allocate space:
 xhat = rep(0,count) #a posteri estimate at each step
@@ -66,7 +67,7 @@ for (Q in Q_Select){
     P[k] = (1-K[k]) * Pminus[k]
   }
   
-  png(paste0(save,'CrixPrice_Kalman_',Q,'.png'),width=1000,height=600,units="px",bg = "transparent")
+  png(paste0(save,'CRIXPrice_Kalman_',Q,'.png'),width=1000,height=600,units="px",bg = "transparent")
   
   x= as.Date(crix$date)
   plot(x,return,col="blue",type="l",xlab = "Date",ylab ="Return",lwd = 1.5,cex.axis=1.5,cex.lab=1.5,cex.main=1.5)
@@ -90,6 +91,6 @@ gif1 <-  gif_plot %>%
   ggtitle("Date: {frame_along}")
 
 #save .gif
-animate(gif1, renderer = gifski_renderer(paste0(save,'CrixPrice_Kalman_',Q,'.gif')), bg = "transparent",
+animate(gif1, renderer = gifski_renderer(paste0(save,'CRIXPrice_Kalman_',Q,'.gif')), bg = "transparent",
         nframes = 100)
 
