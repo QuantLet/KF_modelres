@@ -8,7 +8,8 @@
 # ------------------------------------------------------------------------------
 # Keywords:    plot, Kalman Filter, predict, estimation, returns, CRIX, gif
 # ------------------------------------------------------------------------------
-# See also:    https://gist.github.com/mathew-hall/2ca753c68a594e2c37b1
+# See also:    https://gist.github.com/mathew-hall/2ca753c68a594e2c37b1; 
+#              data source: https://thecrix.de
 # ------------------------------------------------------------------------------
 # Author:      Ruting Rainy Wang
 # ------------------------------------------------------------------------------
@@ -28,7 +29,8 @@ wdir = "/Users/wkhaerdle/Documents/Github/KF_modelres copy"
 setwd(wdir)
 dir.create("Results")
 save = paste0(wdir, '/', "Results/")
-file = "http://data.thecrix.de/data/crix.csv"
+
+file = paste0(wdir,"/CRIX.csv") #The data is loaded from https://thecrix.de
 start = '2021-02-09'
 end = '2017-01-02'
 
