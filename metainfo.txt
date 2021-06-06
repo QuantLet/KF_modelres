@@ -1,4 +1,4 @@
-Name of Quantlet: ‚KF_modelres'
+Name of Quantlet: 'KF_modelres'
 Published in: 'METIS'
 Description: 'Use the CRIX data as an example to predict market return by Kalman filter' 
 Reference:   https: //gist.github.com/mathew-hall/2ca753c68a594e2c37b1
